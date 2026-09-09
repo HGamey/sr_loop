@@ -29,3 +29,4 @@ runs/evo/*
 !runs/evo/spearman_report.*
 !runs/evo/gate3_report_*.json
 !runs/evo/evolve.log
+runs/gate2/train/
