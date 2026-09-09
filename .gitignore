@@ -22,3 +22,10 @@ data/A/*
 !data/A/split.json
 !data/A/baseline.json
 !data/A/dataset_report.json
+!runs/evo/
+runs/evo/*
+!runs/evo/gen_*.json
+!runs/evo/archive.json
+!runs/evo/spearman_report.*
+!runs/evo/gate3_report_*.json
+!runs/evo/evolve.log
