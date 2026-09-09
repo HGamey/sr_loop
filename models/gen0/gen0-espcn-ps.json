@@ -20,6 +20,7 @@
    "act": "relu"
   }
  ],
+ "skip": "bilinear",
  "seed": 0,
  "id": "gen0-espcn-ps",
  "upsample": "pixelshuffle"

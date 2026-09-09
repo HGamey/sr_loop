@@ -23,7 +23,7 @@ def mutate(parent: dict[str, Any], rng: random.Random, new_id: str) -> dict[str,
     g = copy.deepcopy(parent)
     g["id"] = new_id
     for _ in range(rng.randint(1, 3)):
-        op = rng.choice(["channels", "kernel", "act", "add", "remove", "swap_op", "upsample"])
+        op = rng.choice(["channels", "kernel", "act", "add", "remove", "swap_op", "upsample", "skip"])
         layers = g["layers"]
         i = rng.randrange(len(layers))
         if op == "channels":
@@ -40,6 +40,8 @@ def mutate(parent: dict[str, Any], rng: random.Random, new_id: str) -> dict[str,
             layers[i]["op"] = rng.choice(["conv", "dwsep", "res"])
         elif op == "upsample":
             g["upsample"] = rng.choice(sorted(G.UPSAMPLERS))
+        elif op == "skip":
+            g["skip"] = rng.choice(sorted(G.SKIPS))
     # res 块要求 c == 输入通道: 修正而不是丢弃, 让残差块真的有机会出现
     cin = 3
     for l in g["layers"]:

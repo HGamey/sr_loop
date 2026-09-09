@@ -18,13 +18,14 @@ SYSTEM = """你是一个"结构变异算子"。对象是一种在手机 GPU 上�
 你只输出 JSON 数组, 不输出解释。不得使用任何已发表网络或论文的名字, 也不得在 id 里写名字 (id 留空即可)。"""
 
 SCHEMA = """基因组语法 (每个字段必填):
-{"v":1,"id":"","input":[540,960,3],"scale":2,"layers":[...],"upsample":"pixelshuffle"|"bilinear_conv","seed":0}
+{"v":1,"id":"","input":[540,960,3],"scale":2,"layers":[...],"upsample":"pixelshuffle"|"bilinear_conv","skip":"bilinear"|"none","seed":0}
 layers 为 1..16 个层, 顺序执行, 每层:
   {"op":"conv","k":K,"c":C,"act":A}      普通卷积 KxK, 输出 C 通道
   {"op":"dwsep","k":K,"c":C,"act":A}     深度可分离: 逐通道 KxK 再 1x1 到 C 通道
   {"op":"res","k":K,"c":C,"act":A}       残差块: conv-act-conv 后与输入相加, C 必须等于该层输入通道数
   K 只能取 1/3/5/7; C 取 1..64 的整数; A 取 relu/relu6/tanh/linear
 上采样头: pixelshuffle = 3x3 卷积到 12 通道后重排为 2 倍分辨率; bilinear_conv = 先双线性放大 2 倍再 3x3 卷积到 3 通道
+skip: bilinear = 输出加上双线性放大的输入 (网络只学残差, 短训更容易收敛, 额外约 0.5ms); none = 无全局残差
 物理预算 (在 540x960 输入上按解析式计算, 超出直接淘汰, 不上真机):
   参数 <= 50000; FLOPs (= 2*乘加) <= 2e9
   每层乘加 ≈ H*W*K*K*Cin*Cout (conv), H*W*(K*K*Cin + Cin*Cout) (dwsep), 2*H*W*K*K*C*C (res); H*W=518400
@@ -37,6 +38,7 @@ layers 为 1..16 个层, 顺序执行, 每层:
 def _summary(rec: dict[str, Any]) -> dict[str, Any]:
     g = rec.get("genome") or {}
     return {"layers": [[l["op"], l["k"], l["c"], l["act"]] for l in g.get("layers", [])], "upsample": g.get("upsample"),
+            "skip": g.get("skip", "none"),
             "params": rec.get("params"), "flops": rec.get("flops"), "latency_ms": rec.get("latency_ms"),
             "psnr_val": rec.get("psnr_val"), "delta_db": rec.get("delta_db"), "status": rec.get("status"),
             "fallback_reason": rec.get("fallback_reason")}
@@ -119,6 +121,7 @@ def mutate_llm(parents: list[dict[str, Any]], front: list[dict[str, Any]], recen
             g.setdefault("input", [540, 960, 3])
             g.setdefault("scale", 2)
             g.setdefault("seed", 0)
+            g.setdefault("skip", "none")
             g["id"] = "tmp"
             try:
                 G.validate(g)

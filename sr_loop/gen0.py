@@ -21,6 +21,7 @@ def gen0_genomes(h: int, w: int, c1: int, c2: int, seed: int = 0):
             {"op": "conv", "k": 5, "c": c1, "act": "relu"},
             {"op": "conv", "k": 3, "c": c2, "act": "relu"},
         ],
+        "skip": "bilinear",
         "seed": seed,
     }
     return [

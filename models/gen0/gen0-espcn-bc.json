@@ -20,6 +20,7 @@
    "act": "relu"
   }
  ],
+ "skip": "bilinear",
  "seed": 0,
  "id": "gen0-espcn-bc",
  "upsample": "bilinear_conv"

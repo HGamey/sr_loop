@@ -1,41 +1,45 @@
 [
  {
   "id": "gen0-espcn-ps",
-  "fingerprint": "3562c82b59348b90",
+  "fingerprint": "e722de96e8cfb20e",
   "params": 1706,
-  "macs": 870912000,
-  "flops": 1741824000,
+  "macs": 902016000,
+  "flops": 1804032000,
   "params_ok": true,
   "flops_ok": true,
   "ok": true,
   "tflite": {
    "path": "models/gen0/gen0-espcn-ps.tflite",
-   "bytes": 8808,
+   "bytes": 9324,
    "ops": [
     "CONV_2D",
     "CONV_2D",
     "CONV_2D",
-    "DEPTH_TO_SPACE"
+    "DEPTH_TO_SPACE",
+    "RESIZE_BILINEAR",
+    "ADD"
    ]
   }
  },
  {
   "id": "gen0-espcn-bc",
-  "fingerprint": "e286cb159d79dc3d",
+  "fingerprint": "3d978db88cb441a8",
   "params": 1211,
-  "macs": 870912000,
-  "flops": 1741824000,
+  "macs": 902016000,
+  "flops": 1804032000,
   "params_ok": true,
   "flops_ok": true,
   "ok": true,
   "tflite": {
    "path": "models/gen0/gen0-espcn-bc.tflite",
-   "bytes": 7012,
+   "bytes": 7328,
    "ops": [
     "CONV_2D",
     "CONV_2D",
     "RESIZE_BILINEAR",
-    "CONV_2D"
+    "CONV_2D",
+    "RESIZE_BILINEAR",
+    "ADD"
    ]
   }
  }
