@@ -3,6 +3,8 @@ __pycache__/
 models/**/*.tflite
 models/**/*.log
 data/
-runs/
+runs/*
 .venv/
 .DS_Store
+!runs/gate0/
+!runs/gate0/*.json

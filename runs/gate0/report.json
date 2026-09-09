@@ -1,0 +1,59 @@
+{
+ "gate": 0,
+ "serial": "91253241019A",
+ "models": {
+  "gen0-espcn-ps": {
+   "calls": [
+    {
+     "call": 1,
+     "verdict": "PASS",
+     "exit": 0,
+     "latency_ms": 1.099,
+     "dispersion_pct": 1.364877161055505,
+     "full_gpu": true,
+     "gpu_lock_verified": true,
+     "error": null
+    },
+    {
+     "call": 2,
+     "verdict": "PASS",
+     "exit": 0,
+     "latency_ms": 1.088,
+     "dispersion_pct": 0.3676470588235503,
+     "full_gpu": true,
+     "gpu_lock_verified": true,
+     "error": null
+    }
+   ],
+   "pass": true,
+   "retest_diff_pct": 1.0059442158207497
+  },
+  "gen0-espcn-bc": {
+   "calls": [
+    {
+     "call": 1,
+     "verdict": "PASS",
+     "exit": 0,
+     "latency_ms": 1.682,
+     "dispersion_pct": 1.0701545778834856,
+     "full_gpu": true,
+     "gpu_lock_verified": true,
+     "error": null
+    },
+    {
+     "call": 2,
+     "verdict": "PASS",
+     "exit": 0,
+     "latency_ms": 1.674,
+     "dispersion_pct": 0.7765830346475507,
+     "full_gpu": true,
+     "gpu_lock_verified": true,
+     "error": null
+    }
+   ],
+   "pass": true,
+   "retest_diff_pct": 0.4767580452920147
+  }
+ },
+ "pass": true
+}

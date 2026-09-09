@@ -1,0 +1,578 @@
+{
+ "backend": "opencl",
+ "bench_bin": "tools/tflite/android_aarch64_benchmark_model",
+ "delegate": {
+  "partitions": 1,
+  "replaced": 4,
+  "total": 4
+ },
+ "device": {
+  "android": "16",
+  "model": "NX809J",
+  "platform": "canoe",
+  "sdk": "36",
+  "soc": "SM8850"
+ },
+ "lock": {
+  "bus": [
+   {
+    "floor_before_khz": 547000,
+    "name": "DDR",
+    "pin_khz": 5333000
+   },
+   {
+    "floor_before_khz": 282000,
+    "name": "LLCC",
+    "pin_khz": 1350000
+   }
+  ],
+  "cpu_before": [
+   {
+    "cpus": "0,1,2,3,4,5",
+    "governor": "walt",
+    "policy": "policy0"
+   },
+   {
+    "cpus": "6,7",
+    "governor": "walt",
+    "policy": "policy6"
+   }
+  ],
+  "enabled": true,
+  "gpu": {
+   "hz": 902000000,
+   "level": 3,
+   "level_before": [
+    3,
+    17
+   ],
+   "model": "Adreno840v2",
+   "num_levels": 18
+  },
+  "recovered_stale": null,
+  "restored_all": true
+ },
+ "model": {
+  "bytes": 7012,
+  "path": "/Users/mac/projects/sr_loop/models/gen0/gen0-espcn-bc.tflite",
+  "sha256": "fcb4171131b9c92760e7c4fe58a6d0691f26baf3c73e125c361cfa1287c0b0d6"
+ },
+ "ok": true,
+ "ops": [
+  {
+   "avg_ms": 0.191,
+   "gpu": true,
+   "name": "Delegate/convolution_2d 0 -> relu 1:0",
+   "pct": 11.446,
+   "type": "convolution_2d 0 -> relu 1"
+  },
+  {
+   "avg_ms": 0.23,
+   "gpu": true,
+   "name": "Delegate/convolution_2d 2 -> relu 3:1",
+   "pct": 13.751,
+   "type": "convolution_2d 2 -> relu 3"
+  },
+  {
+   "avg_ms": 0.571,
+   "gpu": true,
+   "name": "Delegate/resize 4:2",
+   "pct": 34.202,
+   "type": "resize 4"
+  },
+  {
+   "avg_ms": 0.678,
+   "gpu": true,
+   "name": "Delegate/convolution_2d 5:3",
+   "pct": 40.601,
+   "type": "convolution_2d 5"
+  }
+ ],
+ "params": {
+  "clean_cv_limit_pct": 5.0,
+  "cool_c": 40.0,
+  "fp16": true,
+  "limit_ms": 4.0,
+  "max_rounds": 6,
+  "metric": "gpu",
+  "num_runs": 100,
+  "runs": 3,
+  "threads": 1,
+  "warmup": 20
+ },
+ "rounds": [
+  {
+   "backend": "opencl",
+   "bus_khz": [
+    {
+     "max": 5333000,
+     "min": 5333000,
+     "mode": 5333000,
+     "name": "DDR"
+    },
+    {
+     "max": 1350000,
+     "min": 1350000,
+     "mode": 1350000,
+     "name": "LLCC"
+    }
+   ],
+   "clean": true,
+   "cpu_khz": [
+    {
+     "max": 3628800,
+     "min": 3628800,
+     "mode": 3628800
+    },
+    {
+     "max": 4396800,
+     "min": 4396800,
+     "mode": 4396800
+    }
+   ],
+   "cv_pct": 0.5924977929457214,
+   "delegate": {
+    "partitions": 1,
+    "replaced": 4,
+    "total": 4
+   },
+   "error": null,
+   "first_us": 24069.0,
+   "full_gpu": true,
+   "gpu_kernel_us": 1688.0000000000002,
+   "gpuclk_hz": {
+    "max": 902000000,
+    "min": 902000000,
+    "mode": 902000000
+   },
+   "init_us": 121758.0,
+   "invoke": {
+    "avg": 5512.52,
+    "count": 100,
+    "first": 5523.0,
+    "max": 5657.0,
+    "median": 5509.0,
+    "min": 5421.0,
+    "p5": 5443.0,
+    "p95": 5604.0,
+    "std": 41.0
+   },
+   "invoke_avg_us": 5512.52,
+   "lock": {
+    "applied": true,
+    "bus": [
+     {
+      "cur_khz": 5333000,
+      "floor_khz": 5333000,
+      "max_khz": 5333000,
+      "name": "DDR"
+     },
+     {
+      "cur_khz": 1350000,
+      "floor_khz": 1350000,
+      "max_khz": 1350000,
+      "name": "LLCC"
+     }
+    ],
+    "bus_verified": true,
+    "cpu": [
+     {
+      "cpus": "0,1,2,3,4,5",
+      "cur_khz": 3628800,
+      "governor": "performance",
+      "max_khz": 3628800,
+      "policy": "policy0"
+     },
+     {
+      "cpus": "6,7",
+      "cur_khz": 4396800,
+      "governor": "performance",
+      "max_khz": 4396800,
+      "policy": "policy6"
+     }
+    ],
+    "gpu_thermal_level": 0,
+    "gpu_throttled": false,
+    "gpu_verified": true,
+    "restored": true,
+    "verified": true
+   },
+   "log": "/Users/mac/projects/sr_loop/runs/gate0/gen0-espcn-bc_1/round1.log",
+   "ops": [
+    {
+     "avg_ms": 0.194,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 0 -> relu 1:0",
+     "pct": 11.498,
+     "type": "convolution_2d 0 -> relu 1"
+    },
+    {
+     "avg_ms": 0.227,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 2 -> relu 3:1",
+     "pct": 13.443,
+     "type": "convolution_2d 2 -> relu 3"
+    },
+    {
+     "avg_ms": 0.583,
+     "gpu": true,
+     "name": "Delegate/resize 4:2",
+     "pct": 34.529,
+     "type": "resize 4"
+    },
+    {
+     "avg_ms": 0.684,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 5:3",
+     "pct": 40.53,
+     "type": "convolution_2d 5"
+    }
+   ],
+   "profile_total": {
+    "avg": 1687.77,
+    "count": 100,
+    "first": 1679.0,
+    "max": 1747.0,
+    "median": null,
+    "min": 1676.0,
+    "p5": null,
+    "p95": null,
+    "std": 10.0
+   },
+   "round": 1,
+   "thermal": {
+    "end_c": 51.2,
+    "end_zone": "cpullc-1-1",
+    "start_c": 38.6,
+    "start_zone": "cpullc-0-0",
+    "waited_s": 2
+   },
+   "wall_ms": 1206,
+   "warmup_avg_us": 6472.4
+  },
+  {
+   "backend": "opencl",
+   "bus_khz": [
+    {
+     "max": 5333000,
+     "min": 5333000,
+     "mode": 5333000,
+     "name": "DDR"
+    },
+    {
+     "max": 1350000,
+     "min": 1350000,
+     "mode": 1350000,
+     "name": "LLCC"
+    }
+   ],
+   "clean": true,
+   "cpu_khz": [
+    {
+     "max": 3628800,
+     "min": 3628800,
+     "mode": 3628800
+    },
+    {
+     "max": 4396800,
+     "min": 4396800,
+     "mode": 4396800
+    }
+   ],
+   "cv_pct": 0.7726597325408618,
+   "delegate": {
+    "partitions": 1,
+    "replaced": 4,
+    "total": 4
+   },
+   "error": null,
+   "first_us": 21866.0,
+   "full_gpu": true,
+   "gpu_kernel_us": 1682.0,
+   "gpuclk_hz": {
+    "max": 902000000,
+    "min": 902000000,
+    "mode": 902000000
+   },
+   "init_us": 120550.0,
+   "invoke": {
+    "avg": 5572.18,
+    "count": 100,
+    "first": 5670.0,
+    "max": 5862.0,
+    "median": 5564.0,
+    "min": 5465.0,
+    "p5": 5490.0,
+    "p95": 5670.0,
+    "std": 62.0
+   },
+   "invoke_avg_us": 5572.18,
+   "lock": {
+    "applied": true,
+    "bus": [
+     {
+      "cur_khz": 5333000,
+      "floor_khz": 5333000,
+      "max_khz": 5333000,
+      "name": "DDR"
+     },
+     {
+      "cur_khz": 1350000,
+      "floor_khz": 1350000,
+      "max_khz": 1350000,
+      "name": "LLCC"
+     }
+    ],
+    "bus_verified": true,
+    "cpu": [
+     {
+      "cpus": "0,1,2,3,4,5",
+      "cur_khz": 3628800,
+      "governor": "performance",
+      "max_khz": 3628800,
+      "policy": "policy0"
+     },
+     {
+      "cpus": "6,7",
+      "cur_khz": 4396800,
+      "governor": "performance",
+      "max_khz": 4396800,
+      "policy": "policy6"
+     }
+    ],
+    "gpu_thermal_level": 0,
+    "gpu_throttled": false,
+    "gpu_verified": true,
+    "restored": true,
+    "verified": true
+   },
+   "log": "/Users/mac/projects/sr_loop/runs/gate0/gen0-espcn-bc_1/round2.log",
+   "ops": [
+    {
+     "avg_ms": 0.192,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 0 -> relu 1:0",
+     "pct": 11.418,
+     "type": "convolution_2d 0 -> relu 1"
+    },
+    {
+     "avg_ms": 0.225,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 2 -> relu 3:1",
+     "pct": 13.381,
+     "type": "convolution_2d 2 -> relu 3"
+    },
+    {
+     "avg_ms": 0.582,
+     "gpu": true,
+     "name": "Delegate/resize 4:2",
+     "pct": 34.607,
+     "type": "resize 4"
+    },
+    {
+     "avg_ms": 0.683,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 5:3",
+     "pct": 40.594,
+     "type": "convolution_2d 5"
+    }
+   ],
+   "profile_total": {
+    "avg": 1682.5,
+    "count": 100,
+    "first": 1678.0,
+    "max": 1781.0,
+    "median": null,
+    "min": 1671.0,
+    "p5": null,
+    "p95": null,
+    "std": 13.0
+   },
+   "round": 2,
+   "thermal": {
+    "end_c": 46.1,
+    "end_zone": "cpullc-1-0",
+    "start_c": 37.8,
+    "start_zone": "cpullc-0-0",
+    "waited_s": 2
+   },
+   "wall_ms": 1200,
+   "warmup_avg_us": 6413.85
+  },
+  {
+   "backend": "opencl",
+   "bus_khz": [
+    {
+     "max": 5333000,
+     "min": 5333000,
+     "mode": 5333000,
+     "name": "DDR"
+    },
+    {
+     "max": 1350000,
+     "min": 1350000,
+     "mode": 1350000,
+     "name": "LLCC"
+    }
+   ],
+   "clean": true,
+   "cpu_khz": [
+    {
+     "max": 3628800,
+     "min": 3628800,
+     "mode": 3628800
+    },
+    {
+     "max": 4396800,
+     "min": 4396800,
+     "mode": 4396800
+    }
+   ],
+   "cv_pct": 0.7786762503743636,
+   "delegate": {
+    "partitions": 1,
+    "replaced": 4,
+    "total": 4
+   },
+   "error": null,
+   "first_us": 21702.0,
+   "full_gpu": true,
+   "gpu_kernel_us": 1670.0,
+   "gpuclk_hz": {
+    "max": 902000000,
+    "min": 902000000,
+    "mode": 902000000
+   },
+   "init_us": 123253.0,
+   "invoke": {
+    "avg": 5570.37,
+    "count": 100,
+    "first": 5481.0,
+    "max": 8225.0,
+    "median": 5546.0,
+    "min": 5436.0,
+    "p5": 5466.0,
+    "p95": 5652.0,
+    "std": 271.0
+   },
+   "invoke_avg_us": 5570.37,
+   "lock": {
+    "applied": true,
+    "bus": [
+     {
+      "cur_khz": 5333000,
+      "floor_khz": 5333000,
+      "max_khz": 5333000,
+      "name": "DDR"
+     },
+     {
+      "cur_khz": 1350000,
+      "floor_khz": 1350000,
+      "max_khz": 1350000,
+      "name": "LLCC"
+     }
+    ],
+    "bus_verified": true,
+    "cpu": [
+     {
+      "cpus": "0,1,2,3,4,5",
+      "cur_khz": 3628800,
+      "governor": "performance",
+      "max_khz": 3628800,
+      "policy": "policy0"
+     },
+     {
+      "cpus": "6,7",
+      "cur_khz": 4396800,
+      "governor": "performance",
+      "max_khz": 4396800,
+      "policy": "policy6"
+     }
+    ],
+    "gpu_thermal_level": 0,
+    "gpu_throttled": false,
+    "gpu_verified": true,
+    "restored": true,
+    "verified": true
+   },
+   "log": "/Users/mac/projects/sr_loop/runs/gate0/gen0-espcn-bc_1/round3.log",
+   "ops": [
+    {
+     "avg_ms": 0.191,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 0 -> relu 1:0",
+     "pct": 11.446,
+     "type": "convolution_2d 0 -> relu 1"
+    },
+    {
+     "avg_ms": 0.23,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 2 -> relu 3:1",
+     "pct": 13.751,
+     "type": "convolution_2d 2 -> relu 3"
+    },
+    {
+     "avg_ms": 0.571,
+     "gpu": true,
+     "name": "Delegate/resize 4:2",
+     "pct": 34.202,
+     "type": "resize 4"
+    },
+    {
+     "avg_ms": 0.678,
+     "gpu": true,
+     "name": "Delegate/convolution_2d 5:3",
+     "pct": 40.601,
+     "type": "convolution_2d 5"
+    }
+   ],
+   "profile_total": {
+    "avg": 1669.5,
+    "count": 100,
+    "first": 1682.0,
+    "max": 1742.0,
+    "median": null,
+    "min": 1661.0,
+    "p5": null,
+    "p95": null,
+    "std": 13.0
+   },
+   "round": 3,
+   "thermal": {
+    "end_c": 44.8,
+    "end_zone": "cpullc-0-0",
+    "start_c": 37.8,
+    "start_zone": "cpullc-0-0",
+    "waited_s": 2
+   },
+   "wall_ms": 1205,
+   "warmup_avg_us": 6400.95
+  }
+ ],
+ "serial": "91253241019A",
+ "summary": {
+  "dispersion_limit_pct": 5.0,
+  "dispersion_ok": true,
+  "dispersion_pct": 1.0701545778834856,
+  "errors": [],
+  "feasible": true,
+  "full_gpu": true,
+  "gpu_lock_verified": true,
+  "latency_ms": 1.682,
+  "limit_ms": 4.0,
+  "max_ms": 1.6880000000000002,
+  "metric": "gpu",
+  "min_ms": 1.67,
+  "rounds_interfered": 0,
+  "rounds_total": 3,
+  "window": [
+   1,
+   3
+  ],
+  "within_limit": true
+ },
+ "v": 1,
+ "verdict": "PASS",
+ "wall_s": 21.425932125,
+ "stderr_tail": "[bench] 设备 NX809J (SM8850), root=true, 模型 /Users/mac/projects/sr_loop/models/gen0/gen0-espcn-bc.tflite (7012 B)\n[bench] 锁频目标: CPU 2 簇 performance | GPU 档位 3 = 902 MHz (18 档, 当前 max/min = Some(3)/Some(17))\n[bench] 第1轮: gpu_kernel=1688 us, invoke_avg=5513 us, init=122 ms, 覆盖=Some(\"4/4 x1\"), gpuclk=902 MHz, bus=5333/1350, cv=0.6%, 温度 38.6->51.2C, 恢复=true, 干净=true, 用时 1206 ms\n[bench] 第2轮: gpu_kernel=1682 us, invoke_avg=5572 us, init=121 ms, 覆盖=Some(\"4/4 x1\"), gpuclk=902 MHz, bus=5333/1350, cv=0.8%, 温度 37.8->46.1C, 恢复=true, 干净=true, 用时 1200 ms\n[bench] 第3轮: gpu_kernel=1670 us, invoke_avg=5570 us, init=123 ms, 覆盖=Some(\"4/4 x1\"), gpuclk=902 MHz, bus=5333/1350, cv=0.8%, 温度 37.8->44.8C, 恢复=true, 干净=true, 用时 1205 ms\n"
+}
