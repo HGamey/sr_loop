@@ -13,3 +13,12 @@ runs/*
 !runs/gate1/*.jsonl
 runs/gate0/*/
 runs/gate1/*/
+!runs/gate2/
+!runs/gate2/report.json
+!data/
+data/*
+!data/A/
+data/A/*
+!data/A/split.json
+!data/A/baseline.json
+!data/A/dataset_report.json

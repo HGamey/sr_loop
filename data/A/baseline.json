@@ -1,0 +1,8 @@
+{
+ "scale": 2,
+ "tile": 256,
+ "val_tiles": 360,
+ "bicubic_psnr_val_mean": 37.28600642971325,
+ "bicubic_psnr_val_median": 36.60515932281845,
+ "fingerprint": "bb137848de064d81"
+}

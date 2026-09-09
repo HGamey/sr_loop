@@ -1,0 +1,84 @@
+{
+ "v": 1,
+ "capture": "data/capture_A",
+ "scale": 2,
+ "tile": 256,
+ "crop": [
+  0.2,
+  0.15,
+  0.8,
+  0.8
+ ],
+ "hud_zones": [
+  [
+   0.0,
+   0.0,
+   1.0,
+   0.13
+  ],
+  [
+   0.0,
+   0.0,
+   0.17,
+   0.4
+  ],
+  [
+   0.8,
+   0.13,
+   1.0,
+   0.5
+  ],
+  [
+   0.6,
+   0.58,
+   1.0,
+   1.0
+  ],
+  [
+   0.0,
+   0.62,
+   0.25,
+   1.0
+  ],
+  [
+   0.35,
+   0.85,
+   0.65,
+   1.0
+  ],
+  [
+   0.0,
+   0.93,
+   1.0,
+   1.0
+  ]
+ ],
+ "min_psnr": 28.0,
+ "max_shift_px": 0.25,
+ "max_drop": 0.05,
+ "val_every_segment": 5,
+ "segment_frames": "manifest",
+ "stats": {
+  "frames_in": 150,
+  "frames_align_drop": 0,
+  "tiles_total": 1800,
+  "tiles_psnr_drop": 0,
+  "tiles_align_drop": 0,
+  "tiles_hud_excluded": 4200,
+  "drop_rate": 0.0,
+  "circuit_broken": false
+ },
+ "shift_abs_max": [
+  0.03253192685270185,
+  0.04057057260345248
+ ],
+ "frame_bicubic_psnr_mean": 36.90588989897624,
+ "train_tiles": 1440,
+ "train_bicubic_psnr_mean": 37.43413778365295,
+ "train_bicubic_psnr_median": 36.719853462702886,
+ "val_tiles": 360,
+ "val_bicubic_psnr_mean": 37.28600642971325,
+ "val_bicubic_psnr_median": 36.60515932281845,
+ "ok": true,
+ "fingerprint": "bb137848de064d81"
+}
