@@ -30,8 +30,11 @@ def load_secrets() -> None:
             os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
 
-def chat(system: str, user: str, max_tokens: int = 4000, temperature: float = 0.8, timeout_s: int = 180) -> dict[str, Any]:
-    """返回 {"ok", "provider", "text", "error", "wall_s"}; 全链失败 ok=False (调用方自行降级)"""
+def chat(system: str, user: str, max_tokens: int = 8000, temperature: float = 0.8, timeout_s: int = 240,
+         attempts: int = 3) -> dict[str, Any]:
+    """返回 {"ok", "provider", "text", "error", "wall_s"}; 全链失败 ok=False (调用方自行降级)。
+    每家通道最多 attempts 次 (超时/限流/空回包都重试, 退避 5s*次数), 再切下一家; 错误逐条记录并打到 stderr。"""
+    import sys
     load_secrets()
     errors = []
     for p in PROVIDERS:
@@ -41,16 +44,26 @@ def chat(system: str, user: str, max_tokens: int = 4000, temperature: float = 0.
             continue
         body = {"model": p["model"], "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
                 "temperature": temperature, "max_tokens": max_tokens, **p["extra"]}
-        req = urllib.request.Request(p["url"], data=json.dumps(body).encode(), method="POST",
-                                     headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
-        t0 = time.time()
-        try:
-            with urllib.request.urlopen(req, timeout=timeout_s) as resp:
-                data = json.loads(resp.read().decode())
-            text = data["choices"][0]["message"]["content"]
-            if not text or not text.strip():
-                raise ValueError("empty content")
-            return {"ok": True, "provider": p["name"], "text": text, "error": None, "wall_s": time.time() - t0}
-        except Exception as e:  # noqa: BLE001 - 通道失败是常态, 切下一家
-            errors.append(f"{p['name']}: {type(e).__name__}: {str(e)[:200]}")
+        for k in range(1, attempts + 1):
+            req = urllib.request.Request(p["url"], data=json.dumps(body).encode(), method="POST",
+                                         headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"})
+            t0 = time.time()
+            try:
+                with urllib.request.urlopen(req, timeout=timeout_s) as resp:
+                    raw = resp.read().decode()
+                data = json.loads(raw)
+                msg0 = data["choices"][0]["message"]
+                text = msg0.get("content") or msg0.get("reasoning_content") or ""
+                if not text.strip():
+                    # 空回包: 把 finish_reason 与回包头部记进错误, 便于定位是限流、截断还是字段变化
+                    raise ValueError(f"empty content finish={data['choices'][0].get('finish_reason')} raw={raw[:240]!r}")
+                return {"ok": True, "provider": p["name"], "text": text, "error": "; ".join(errors) or None, "wall_s": time.time() - t0}
+            except Exception as e:  # noqa: BLE001 - 通道失败是常态, 重试后切下一家
+                detail = getattr(e, "read", None)
+                detail = detail().decode(errors="replace")[:200] if callable(detail) else ""
+                msg = f"{p['name']} #{k}: {type(e).__name__}: {str(e)[:160]} {detail}".strip()
+                errors.append(msg)
+                print(f"[llm] {msg}", file=sys.stderr, flush=True)
+                if k < attempts:
+                    time.sleep(5 * k)
     return {"ok": False, "provider": None, "text": "", "error": "; ".join(errors), "wall_s": 0.0}
