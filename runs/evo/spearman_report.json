@@ -1,0 +1,170 @@
+{
+ "generations": 13,
+ "alpha": 0.05,
+ "series": [
+  {
+   "gen": 1,
+   "best_psnr_so_far": 39.49772262573242,
+   "best_id_so_far": "gen1-1",
+   "gen_best_psnr": 39.49772262573242,
+   "gen_best_id": "gen1-1",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 4,
+   "wall_s": 680.7483320236206
+  },
+  {
+   "gen": 2,
+   "best_psnr_so_far": 39.49772262573242,
+   "best_id_so_far": "gen1-1",
+   "gen_best_psnr": 38.66157913208008,
+   "gen_best_id": "gen2-3",
+   "n_children": 6,
+   "n_feasible": 5,
+   "front_size": 6,
+   "wall_s": 591.3247969150543
+  },
+  {
+   "gen": 3,
+   "best_psnr_so_far": 39.49772262573242,
+   "best_id_so_far": "gen1-1",
+   "gen_best_psnr": 38.72047805786133,
+   "gen_best_id": "gen3-6",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 6,
+   "wall_s": 706.4696772098541
+  },
+  {
+   "gen": 4,
+   "best_psnr_so_far": 39.49772262573242,
+   "best_id_so_far": "gen1-1",
+   "gen_best_psnr": 38.41510772705078,
+   "gen_best_id": "gen4-1",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 7,
+   "wall_s": 715.4835140705109
+  },
+  {
+   "gen": 5,
+   "best_psnr_so_far": 39.50308609008789,
+   "best_id_so_far": "gen5-6",
+   "gen_best_psnr": 39.50308609008789,
+   "gen_best_id": "gen5-6",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 8,
+   "wall_s": 646.3763928413391
+  },
+  {
+   "gen": 6,
+   "best_psnr_so_far": 39.50308609008789,
+   "best_id_so_far": "gen5-6",
+   "gen_best_psnr": 39.363258361816406,
+   "gen_best_id": "gen6-4",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 9,
+   "wall_s": 579.1646461486816
+  },
+  {
+   "gen": 7,
+   "best_psnr_so_far": 39.50308609008789,
+   "best_id_so_far": "gen5-6",
+   "gen_best_psnr": 39.197723388671875,
+   "gen_best_id": "gen7-5",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 9,
+   "wall_s": 700.1404747962952
+  },
+  {
+   "gen": 8,
+   "best_psnr_so_far": 39.694908142089844,
+   "best_id_so_far": "gen8-2",
+   "gen_best_psnr": 39.694908142089844,
+   "gen_best_id": "gen8-2",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 11,
+   "wall_s": 657.715341091156
+  },
+  {
+   "gen": 9,
+   "best_psnr_so_far": 39.77791213989258,
+   "best_id_so_far": "gen9-5",
+   "gen_best_psnr": 39.77791213989258,
+   "gen_best_id": "gen9-5",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 12,
+   "wall_s": 669.248733997345
+  },
+  {
+   "gen": 10,
+   "best_psnr_so_far": 39.86228942871094,
+   "best_id_so_far": "gen10-6",
+   "gen_best_psnr": 39.86228942871094,
+   "gen_best_id": "gen10-6",
+   "n_children": 6,
+   "n_feasible": 5,
+   "front_size": 12,
+   "wall_s": 539.2500739097595
+  },
+  {
+   "gen": 11,
+   "best_psnr_so_far": 39.86228942871094,
+   "best_id_so_far": "gen10-6",
+   "gen_best_psnr": 39.615501403808594,
+   "gen_best_id": "gen11-5",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 12,
+   "wall_s": 642.419939994812
+  },
+  {
+   "gen": 12,
+   "best_psnr_so_far": 39.86228942871094,
+   "best_id_so_far": "gen10-6",
+   "gen_best_psnr": 39.62809753417969,
+   "gen_best_id": "gen12-6",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 12,
+   "wall_s": 615.8520119190216
+  },
+  {
+   "gen": 13,
+   "best_psnr_so_far": 39.86228942871094,
+   "best_id_so_far": "gen10-6",
+   "gen_best_psnr": 39.70404052734375,
+   "gen_best_id": "gen13-2",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 12,
+   "wall_s": 689.2860341072083
+  }
+ ],
+ "best_psnr_so_far": {
+  "n": 13,
+  "rho": 0.9664708656063741,
+  "p_value": 7.744092209402454e-08,
+  "significant_positive": true,
+  "constant": false,
+  "first": 39.49772262573242,
+  "last": 39.86228942871094,
+  "gain_db": 0.3645668029785156
+ },
+ "gen_best_psnr": {
+  "n": 13,
+  "rho": 0.7472527472527472,
+  "p_value": 0.003326741383429985,
+  "significant_positive": true,
+  "constant": false,
+  "first": 39.49772262573242,
+  "last": 39.70404052734375,
+  "gain_db": 0.20631790161132812
+ },
+ "conclusion": "显著正向演进 (累计最优: rho=0.9664708656063741, p=7.744092209402454e-08; 逐代最优: rho=0.7472527472527472, p=0.003326741383429985)"
+}

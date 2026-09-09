@@ -1,0 +1,113 @@
+[gen0] gen0-espcn-ps: FEASIBLE lat=1.625 psnr=38.66157913208008 delta=1.376 src=gen0
+[gen0] gen0-espcn-bc: FEASIBLE lat=2.221 psnr=38.82276916503906 delta=1.537 src=gen0
+[gen0] 完成: 可行 2/2, 本代最佳 PSNR 38.82276916503906, 历史最佳 38.82276916503906 (gen0-espcn-bc), 前沿 2 个, 270s
+[gen1] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen1] gen1-1: FEASIBLE lat=2.401 psnr=39.49772262573242 delta=2.212 src=llm
+[gen1] gen1-2: FEASIBLE lat=3.002 psnr=38.111595153808594 delta=0.826 src=llm
+[gen1] gen1-3: FEASIBLE lat=1.897 psnr=35.30814743041992 delta=-1.978 src=llm
+[gen1] gen1-4: FEASIBLE lat=1.2759999999999998 psnr=31.12085723876953 delta=-6.165 src=llm
+[gen1] gen1-5: FEASIBLE lat=1.653 psnr=31.188322067260742 delta=-6.098 src=llm
+[gen1] gen1-6: FEASIBLE lat=1.685 psnr=35.30674743652344 delta=-1.979 src=llm
+[gen1] 完成: 可行 6/6, 本代最佳 PSNR 39.49772262573242, 历史最佳 39.49772262573242 (gen1-1), 前沿 4 个, 681s
+[gen2] 变异: LLM=None ok=False raw=0 valid=0 dup=0 invalid=0; 子代 6 (random 补齐 6)
+[gen2] gen2-1: BUDGET_FAIL lat=None psnr=None delta=None src=random
+[gen2] gen2-2: FEASIBLE lat=1.835 psnr=37.7944450378418 delta=0.508 src=random
+[gen2] gen2-3: FEASIBLE lat=1.576 psnr=38.66157913208008 delta=1.376 src=random
+[gen2] gen2-4: FEASIBLE lat=0.924 psnr=28.626670837402344 delta=-8.659 src=random
+[gen2] gen2-5: FEASIBLE lat=1.552 psnr=36.471797943115234 delta=-0.814 src=random
+[gen2] gen2-6: FEASIBLE lat=1.896 psnr=35.422630310058594 delta=-1.863 src=random
+[gen2] 完成: 可行 5/6, 本代最佳 PSNR 38.66157913208008, 历史最佳 39.49772262573242 (gen1-1), 前沿 6 个, 591s
+[gen3] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=1; 子代 6 (random 补齐 0)
+[gen3] gen3-1: FEASIBLE lat=1.791 psnr=35.30582809448242 delta=-1.98 src=llm
+[gen3] gen3-2: FEASIBLE lat=1.51 psnr=38.30926513671875 delta=1.023 src=llm
+[gen3] gen3-3: FEASIBLE lat=1.4500000000000002 psnr=27.552928924560547 delta=-9.733 src=llm
+[gen3] gen3-4: FEASIBLE lat=2.684 psnr=38.42523956298828 delta=1.139 src=llm
+[gen3] gen3-5: FEASIBLE lat=1.9609999999999999 psnr=35.305240631103516 delta=-1.981 src=llm
+[gen3] gen3-6: FEASIBLE lat=2.33 psnr=38.72047805786133 delta=1.434 src=llm
+[gen3] 完成: 可行 6/6, 本代最佳 PSNR 38.72047805786133, 历史最佳 39.49772262573242 (gen1-1), 前沿 6 个, 706s
+[gen0] 已归档, 跳过
+[gen1] 已归档, 跳过
+[gen2] 已归档, 跳过
+[gen3] 已归档, 跳过
+[gen4] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen4] gen4-1: FEASIBLE lat=2.2039999999999997 psnr=38.41510772705078 delta=1.129 src=llm
+[gen4] gen4-2: FEASIBLE lat=1.624 psnr=32.13766098022461 delta=-5.148 src=llm
+[gen4] gen4-3: FEASIBLE lat=2.4770000000000003 psnr=37.799766540527344 delta=0.514 src=llm
+[gen4] gen4-4: FEASIBLE lat=2.4930000000000003 psnr=37.59002685546875 delta=0.304 src=llm
+[gen4] gen4-5: FEASIBLE lat=1.4620000000000002 psnr=38.29502487182617 delta=1.009 src=llm
+[gen4] gen4-6: FEASIBLE lat=2.106 psnr=38.11520767211914 delta=0.829 src=llm
+[gen4] 完成: 可行 6/6, 本代最佳 PSNR 38.41510772705078, 历史最佳 39.49772262573242 (gen1-1), 前沿 7 个, 715s
+[gen5] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen5] gen5-1: FEASIBLE lat=1.972 psnr=38.831302642822266 delta=1.545 src=llm
+[gen5] gen5-2: FEASIBLE lat=2.346 psnr=38.56851577758789 delta=1.283 src=llm
+[gen5] gen5-3: FEASIBLE lat=2.406 psnr=38.077667236328125 delta=0.792 src=llm
+[gen5] gen5-4: FEASIBLE lat=2.4130000000000003 psnr=38.775108337402344 delta=1.489 src=llm
+[gen5] gen5-5: FEASIBLE lat=3.391 psnr=38.81193161010742 delta=1.526 src=llm
+[gen5] gen5-6: FEASIBLE lat=2.508 psnr=39.50308609008789 delta=2.217 src=llm
+[gen5] 完成: 可行 6/6, 本代最佳 PSNR 39.50308609008789, 历史最佳 39.50308609008789 (gen5-6), 前沿 8 个, 646s
+[gen6] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=2; 子代 6 (random 补齐 0)
+[gen6] gen6-1: FEASIBLE lat=1.4460000000000002 psnr=37.73542022705078 delta=0.449 src=llm
+[gen6] gen6-2: FEASIBLE lat=1.618 psnr=37.66343688964844 delta=0.377 src=llm
+[gen6] gen6-3: FEASIBLE lat=2.939 psnr=38.706634521484375 delta=1.421 src=llm
+[gen6] gen6-4: FEASIBLE lat=2.95 psnr=39.363258361816406 delta=2.077 src=llm
+[gen6] gen6-5: FEASIBLE lat=2.01 psnr=38.473323822021484 delta=1.187 src=llm
+[gen6] gen6-6: FEASIBLE lat=2.676 psnr=38.14065933227539 delta=0.855 src=llm
+[gen6] 完成: 可行 6/6, 本代最佳 PSNR 39.363258361816406, 历史最佳 39.50308609008789 (gen5-6), 前沿 9 个, 579s
+[gen7] 变异: LLM=glm-53-flash ok=True raw=12 valid=3 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen7] gen7-1: FEASIBLE lat=3.9379999999999997 psnr=38.499149322509766 delta=1.213 src=llm
+[gen7] gen7-2: FEASIBLE lat=2.411 psnr=37.64802932739258 delta=0.362 src=llm
+[gen7] gen7-3: FEASIBLE lat=2.89 psnr=30.303558349609375 delta=-6.982 src=llm
+[gen7] gen7-4: FEASIBLE lat=2.37 psnr=35.306007385253906 delta=-1.98 src=llm_repaired
+[gen7] gen7-5: FEASIBLE lat=3.0200000000000005 psnr=39.197723388671875 delta=1.912 src=llm_repaired
+[gen7] gen7-6: FEASIBLE lat=2.401 psnr=38.65412139892578 delta=1.368 src=llm_repaired
+[gen7] 完成: 可行 6/6, 本代最佳 PSNR 39.197723388671875, 历史最佳 39.50308609008789 (gen5-6), 前沿 9 个, 700s
+[gen8] 变异: LLM=glm-53-flash ok=True raw=12 valid=2 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen8] gen8-1: FEASIBLE lat=3.169 psnr=38.85598373413086 delta=1.57 src=llm
+[gen8] gen8-2: FEASIBLE lat=2.514 psnr=39.694908142089844 delta=2.409 src=llm
+[gen8] gen8-3: FEASIBLE lat=2.122 psnr=38.984703063964844 delta=1.699 src=llm_repaired
+[gen8] gen8-4: FEASIBLE lat=2.3489999999999998 psnr=38.010719299316406 delta=0.725 src=llm_repaired
+[gen8] gen8-5: FEASIBLE lat=2.5970000000000004 psnr=39.168174743652344 delta=1.882 src=llm_repaired
+[gen8] gen8-6: FEASIBLE lat=2.138 psnr=38.29924774169922 delta=1.013 src=llm_repaired
+[gen8] 完成: 可行 6/6, 本代最佳 PSNR 39.694908142089844, 历史最佳 39.694908142089844 (gen8-2), 前沿 11 个, 658s
+[gen9] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen9] gen9-1: FEASIBLE lat=2.131 psnr=39.173736572265625 delta=1.888 src=llm
+[gen9] gen9-2: FEASIBLE lat=2.5180000000000002 psnr=37.3591194152832 delta=0.073 src=llm
+[gen9] gen9-3: FEASIBLE lat=2.248 psnr=39.164310455322266 delta=1.878 src=llm
+[gen9] gen9-4: FEASIBLE lat=3.4200000000000004 psnr=37.393829345703125 delta=0.108 src=llm
+[gen9] gen9-5: FEASIBLE lat=2.8579999999999997 psnr=39.77791213989258 delta=2.492 src=llm
+[gen9] gen9-6: FEASIBLE lat=1.475 psnr=38.71126174926758 delta=1.425 src=llm
+[gen9] 完成: 可行 6/6, 本代最佳 PSNR 39.77791213989258, 历史最佳 39.77791213989258 (gen9-5), 前沿 12 个, 669s
+[gen10] 变异: LLM=glm-53-flash ok=True raw=12 valid=0 dup=0 invalid=1; 子代 6 (random 补齐 0)
+[gen10] gen10-1: FEASIBLE lat=2.832 psnr=35.30583953857422 delta=-1.98 src=llm_repaired
+[gen10] gen10-2: FEASIBLE lat=2.7940000000000005 psnr=39.30377197265625 delta=2.018 src=llm_repaired
+[gen10] gen10-3: FEASIBLE lat=2.242 psnr=38.029605865478516 delta=0.744 src=llm_repaired
+[gen10] gen10-4: FEASIBLE lat=1.8950000000000002 psnr=38.99931335449219 delta=1.713 src=llm_repaired
+[gen10] gen10-5: SLOW lat=4.151 psnr=None delta=None src=llm_repaired
+[gen10] gen10-6: FEASIBLE lat=2.9669999999999996 psnr=39.86228942871094 delta=2.576 src=llm_repaired
+[gen10] 完成: 可行 5/6, 本代最佳 PSNR 39.86228942871094, 历史最佳 39.86228942871094 (gen10-6), 前沿 12 个, 539s
+[gen11] 变异: LLM=glm-53-flash ok=True raw=12 valid=4 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen11] gen11-1: FEASIBLE lat=2.06 psnr=38.54853057861328 delta=1.263 src=llm
+[gen11] gen11-2: FEASIBLE lat=2.6559999999999997 psnr=36.360992431640625 delta=-0.925 src=llm
+[gen11] gen11-3: FEASIBLE lat=1.5210000000000001 psnr=38.14032745361328 delta=0.854 src=llm
+[gen11] gen11-4: FEASIBLE lat=1.8900000000000001 psnr=30.302099227905273 delta=-6.984 src=llm
+[gen11] gen11-5: FEASIBLE lat=2.9749999999999996 psnr=39.615501403808594 delta=2.329 src=llm_repaired
+[gen11] gen11-6: FEASIBLE lat=1.908 psnr=38.73805236816406 delta=1.452 src=llm_repaired
+[gen11] 完成: 可行 6/6, 本代最佳 PSNR 39.615501403808594, 历史最佳 39.86228942871094 (gen10-6), 前沿 12 个, 642s
+[gen12] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen12] gen12-1: FEASIBLE lat=2.024 psnr=38.943477630615234 delta=1.657 src=llm
+[gen12] gen12-2: FEASIBLE lat=1.5330000000000001 psnr=35.305545806884766 delta=-1.98 src=llm
+[gen12] gen12-3: FEASIBLE lat=1.998 psnr=38.30976104736328 delta=1.024 src=llm
+[gen12] gen12-4: FEASIBLE lat=2.433 psnr=39.04728698730469 delta=1.761 src=llm
+[gen12] gen12-5: FEASIBLE lat=2.2330000000000005 psnr=38.94820785522461 delta=1.662 src=llm
+[gen12] gen12-6: FEASIBLE lat=2.667 psnr=39.62809753417969 delta=2.342 src=llm
+[gen12] 完成: 可行 6/6, 本代最佳 PSNR 39.62809753417969, 历史最佳 39.86228942871094 (gen10-6), 前沿 12 个, 616s
+[gen13] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen13] gen13-1: FEASIBLE lat=3.1860000000000004 psnr=39.14543914794922 delta=1.859 src=llm
+[gen13] gen13-2: FEASIBLE lat=3.114 psnr=39.70404052734375 delta=2.418 src=llm
+[gen13] gen13-3: FEASIBLE lat=2.58 psnr=35.30586624145508 delta=-1.98 src=llm
+[gen13] gen13-4: FEASIBLE lat=3.908 psnr=39.18792724609375 delta=1.902 src=llm
+[gen13] gen13-5: FEASIBLE lat=3.152 psnr=35.30584716796875 delta=-1.98 src=llm
+[gen13] gen13-6: FEASIBLE lat=3.171 psnr=39.31969451904297 delta=2.034 src=llm
+[gen13] 完成: 可行 6/6, 本代最佳 PSNR 39.70404052734375, 历史最佳 39.86228942871094 (gen10-6), 前沿 12 个, 689s
+[gen14] 变异: LLM=glm-53-flash ok=True raw=12 valid=6 dup=0 invalid=0; 子代 6 (random 补齐 0)
+[gen14] gen14-1: FEASIBLE lat=2.515 psnr=38.8349494934082 delta=1.549 src=llm

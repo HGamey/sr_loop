@@ -30,3 +30,12 @@ uv venv --python 3.12 ~/.venvs/srloop && uv pip install --python ~/.venvs/srloop
 
 产物: `runs/gate*/report.json` 为各门证据; `runs/evo/gen_N.json` 逐代归档, `runs/evo/archive.json` 指纹去重总档,
 `runs/evo/spearman_report.json` 为 Gate 4 结论。LLM 通道走 `../phonefarm/secrets.env` 的密钥 (glm-5.3-flash 优先, 文本调用)。
+
+## 结果 (2026-09-09, NX809J)
+
+- Gate 0: 标尺 PASS (Gen 0 ps/bc 两次冷机 1.099/1.088 与 1.682/1.674 ms, 复测差 1.0%/0.5%)
+- Gate 1: 随机变异 6 个秒级判定 (5 FEASIBLE, 1 BUDGET_FAIL), FLOOR_MOD 模型真机 FAIL_FALLBACK
+- Gate 2: 数据集 A 150 帧 1440/360 块, 丢弃率 0%, Bicubic 基线 37.286 dB; Gen 0 +1.376 / +1.537 dB
+- Gate 3: gen_1.json 全自主 (LLM 6/6 可行, 零错误)
+- Gate 4: 13 代 (用户决定提前结项), 累计最优序列 Spearman rho = 0.966, p = 7.7e-8; 逐代最优 rho = 0.747, p = 0.0033;
+  历史最优 gen10-6: 2.967 ms, 39.862 dB (+2.576 dB vs Bicubic, +1.04 dB vs Gen 0 最佳); 第 10 代出现真机 SLOW 否决 (4.151 ms)
