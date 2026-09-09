@@ -10,9 +10,14 @@ import sys
 
 
 def spearman(xs, ys):
+    """常数序列 (如累计最优从未提升) 的秩相关无定义: 返回 (None, None) 而不是 NaN, 保证 JSON 合法"""
+    import math
     from scipy.stats import spearmanr
+    if len(set(ys)) < 2:
+        return None, None
     r = spearmanr(xs, ys)
-    return float(r.statistic), float(r.pvalue)
+    rho, p = float(r.statistic), float(r.pvalue)
+    return (None if math.isnan(rho) else rho), (None if math.isnan(p) else p)
 
 
 def main() -> int:
@@ -29,7 +34,9 @@ def main() -> int:
         pairs = [(g, s[key]) for g, s in zip(gens, series) if s.get(key) is not None]
         if len(pairs) >= 3:
             rho, p = spearman([p[0] for p in pairs], [p[1] for p in pairs])
-            report[key] = {"n": len(pairs), "rho": rho, "p_value": p, "significant_positive": rho > 0 and p < a.alpha,
+            report[key] = {"n": len(pairs), "rho": rho, "p_value": p,
+                           "significant_positive": rho is not None and rho > 0 and p is not None and p < a.alpha,
+                           "constant": len({v for _, v in pairs}) < 2,
                            "first": pairs[0][1], "last": pairs[-1][1], "gain_db": pairs[-1][1] - pairs[0][1]}
         else:
             report[key] = {"n": len(pairs), "rho": None, "p_value": None, "significant_positive": False}
