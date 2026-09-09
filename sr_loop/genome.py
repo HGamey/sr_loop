@@ -126,14 +126,21 @@ def fingerprint(g: dict[str, Any]) -> str:
     return hashlib.sha256(canonical_json(body).encode()).hexdigest()[:16]
 
 
-def genome_to_model(g: dict[str, Any]):
-    """确定性生成 keras.Model (固定 seed 初始化; 同一 genome 两次调用权重逐位相同)。"""
+def genome_to_model(g: dict[str, Any], input_hw="genome"):
+    """确定性生成 keras.Model (固定 seed 初始化; 同一 genome 两次调用权重逐位相同)。
+
+    input_hw="genome": 用基因组的静态输入尺寸 (导出 TFLite / 真机秒筛用, GPU Delegate 要求静态形状);
+    input_hw=None: 空间尺寸动态 (训练与任意尺寸评估用); 也可传 (H, W)。两种图的权重形状完全一致, 可互相载入。"""
     import numpy as np
     import tensorflow as tf
     from tensorflow import keras
 
     validate(g)
     h, w, cch = g["input"]
+    if input_hw is None:
+        h, w = None, None
+    elif input_hw != "genome":
+        h, w = int(input_hw[0]), int(input_hw[1])
     r = g["scale"]
     seed = int(g["seed"])
     # 确定性: 每一层各自派生独立种子, 层序不变则权重不变
@@ -146,7 +153,7 @@ def genome_to_model(g: dict[str, Any]):
     def act_of(name):
         return None if name == "linear" else name
 
-    inp = keras.Input(shape=(h, w, cch), batch_size=1, dtype="float32", name="lr")
+    inp = keras.Input(shape=(h, w, cch), batch_size=1 if h is not None else None, dtype="float32", name="lr")
     x = inp
     for l in g["layers"]:
         k, c, act = l["k"], l["c"], l["act"]
@@ -163,8 +170,12 @@ def genome_to_model(g: dict[str, Any]):
         x = keras.layers.Conv2D(3 * r * r, 3, padding="same", kernel_initializer=init())(x)
         x = keras.layers.Lambda(lambda t: tf.nn.depth_to_space(t, r), name="pixelshuffle")(x)
     else:
-        x = keras.layers.Lambda(
-            lambda t: tf.image.resize(t, (h * r, w * r), method="bilinear"), name="bilinear")(x)
+        if h is not None:
+            x = keras.layers.Lambda(
+                lambda t: tf.image.resize(t, (h * r, w * r), method="bilinear"), name="bilinear")(x)
+        else:
+            x = keras.layers.Lambda(
+                lambda t: tf.image.resize(t, tf.shape(t)[1:3] * r, method="bilinear"), name="bilinear")(x)
         x = keras.layers.Conv2D(3, 3, padding="same", kernel_initializer=init())(x)
     model = keras.Model(inp, x, name=g["id"].replace("-", "_"))
     del np
