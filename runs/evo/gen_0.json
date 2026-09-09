@@ -1,0 +1,207 @@
+{
+ "v": 1,
+ "gen": 0,
+ "llm": null,
+ "children": [
+  {
+   "id": "gen0-espcn-ps",
+   "gen": 0,
+   "source": "gen0",
+   "genome": {
+    "v": 1,
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 5,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     }
+    ],
+    "skip": "bilinear",
+    "seed": 0,
+    "id": "gen0-espcn-ps",
+    "upsample": "pixelshuffle"
+   },
+   "fingerprint": "e722de96e8cfb20e",
+   "status": "FEASIBLE",
+   "params": 1706,
+   "flops": 1804032000,
+   "latency_ms": 1.625,
+   "psnr_val": 38.66157913208008,
+   "delta_db": 1.3755727023668314,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 61.69423007965088,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 58.101075887680054,
+   "weights": "runs/evo/gen0/train/gen0-espcn-ps.weights.h5"
+  },
+  {
+   "id": "gen0-espcn-bc",
+   "gen": 0,
+   "source": "gen0",
+   "genome": {
+    "v": 1,
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 5,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     }
+    ],
+    "skip": "bilinear",
+    "seed": 0,
+    "id": "gen0-espcn-bc",
+    "upsample": "bilinear_conv"
+   },
+   "fingerprint": "3d978db88cb441a8",
+   "status": "FEASIBLE",
+   "params": 1211,
+   "flops": 1804032000,
+   "latency_ms": 2.221,
+   "psnr_val": 38.82276916503906,
+   "delta_db": 1.5367627353258158,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 42.75692892074585,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 107.88516592979431,
+   "weights": "runs/evo/gen0/train/gen0-espcn-bc.weights.h5"
+  }
+ ],
+ "front": [
+  {
+   "id": "gen0-espcn-ps",
+   "gen": 0,
+   "source": "gen0",
+   "genome": {
+    "v": 1,
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 5,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     }
+    ],
+    "skip": "bilinear",
+    "seed": 0,
+    "id": "gen0-espcn-ps",
+    "upsample": "pixelshuffle"
+   },
+   "fingerprint": "e722de96e8cfb20e",
+   "status": "FEASIBLE",
+   "params": 1706,
+   "flops": 1804032000,
+   "latency_ms": 1.625,
+   "psnr_val": 38.66157913208008,
+   "delta_db": 1.3755727023668314,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 61.69423007965088,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 58.101075887680054,
+   "weights": "runs/evo/gen0/train/gen0-espcn-ps.weights.h5"
+  },
+  {
+   "id": "gen0-espcn-bc",
+   "gen": 0,
+   "source": "gen0",
+   "genome": {
+    "v": 1,
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 5,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     }
+    ],
+    "skip": "bilinear",
+    "seed": 0,
+    "id": "gen0-espcn-bc",
+    "upsample": "bilinear_conv"
+   },
+   "fingerprint": "3d978db88cb441a8",
+   "status": "FEASIBLE",
+   "params": 1211,
+   "flops": 1804032000,
+   "latency_ms": 2.221,
+   "psnr_val": 38.82276916503906,
+   "delta_db": 1.5367627353258158,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 42.75692892074585,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 107.88516592979431,
+   "weights": "runs/evo/gen0/train/gen0-espcn-bc.weights.h5"
+  }
+ ],
+ "series_entry": {
+  "gen": 0,
+  "best_psnr_so_far": 38.82276916503906,
+  "best_id_so_far": "gen0-espcn-bc",
+  "gen_best_psnr": 38.82276916503906,
+  "gen_best_id": "gen0-espcn-bc",
+  "n_children": 2,
+  "n_feasible": 2,
+  "front_size": 2,
+  "wall_s": 270.4410901069641
+ },
+ "params": {
+  "children": 6,
+  "steps": 2000,
+  "seed": 0,
+  "limit_ms": 4.0,
+  "data": "data/A"
+ }
+}

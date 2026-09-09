@@ -1,0 +1,43 @@
+{
+ "gate": 3,
+ "gen": 1,
+ "file": "runs/evo/gen_1.json",
+ "pass": true,
+ "checks": {
+  "exists": true,
+  "n_children": 6,
+  "all_have_status": true,
+  "n_error": 0,
+  "statuses": {
+   "FEASIBLE": 6
+  },
+  "mutation_recorded": true,
+  "llm": {
+   "ok": true,
+   "provider": "glm-53-flash",
+   "n_raw": 12,
+   "n_valid": 6,
+   "n_dup": 0,
+   "n_invalid": 0,
+   "n_over_budget": 3,
+   "n_repaired": 0,
+   "error": null,
+   "wall_s": 58.83332681655884
+  },
+  "sources": {
+   "llm": 6
+  },
+  "front_nonempty": true,
+  "series_entry": {
+   "gen": 1,
+   "best_psnr_so_far": 39.49772262573242,
+   "best_id_so_far": "gen1-1",
+   "gen_best_psnr": 39.49772262573242,
+   "gen_best_id": "gen1-1",
+   "n_children": 6,
+   "n_feasible": 6,
+   "front_size": 4,
+   "wall_s": 680.7483320236206
+  }
+ }
+}
