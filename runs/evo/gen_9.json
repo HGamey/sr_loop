@@ -1,0 +1,854 @@
+{
+ "v": 1,
+ "gen": 9,
+ "llm": {
+  "ok": true,
+  "provider": "glm-53-flash",
+  "n_raw": 12,
+  "n_valid": 6,
+  "n_dup": 0,
+  "n_invalid": 0,
+  "n_over_budget": 0,
+  "n_repaired": 0,
+  "error": null,
+  "wall_s": 155.22988986968994
+ },
+ "children": [
+  {
+   "id": "gen9-1",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-1",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 7
+   },
+   "fingerprint": "48733310328ba509",
+   "status": "FEASIBLE",
+   "params": 1582,
+   "flops": 1658880000,
+   "latency_ms": 2.131,
+   "psnr_val": 39.173736572265625,
+   "delta_db": 1.8877301425523783,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.983635902404785,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 53.805026054382324,
+   "weights": "runs/evo/gen9/train/gen9-1.weights.h5"
+  },
+  {
+   "id": "gen9-2",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-2",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 5,
+      "c": 12,
+      "act": "relu6"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 12,
+      "act": "relu6"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 23
+   },
+   "fingerprint": "f30f774fca42053d",
+   "status": "FEASIBLE",
+   "params": 1710,
+   "flops": 1782259200,
+   "latency_ms": 2.5180000000000002,
+   "psnr_val": 37.3591194152832,
+   "delta_db": 0.07311298556995638,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.843538999557495,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 63.39548587799072,
+   "weights": "runs/evo/gen9/train/gen9-2.weights.h5"
+  },
+  {
+   "id": "gen9-3",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-3",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 11,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 11,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 31
+   },
+   "fingerprint": "da646e91400fbeba",
+   "status": "FEASIBLE",
+   "params": 1516,
+   "flops": 1584230400,
+   "latency_ms": 2.248,
+   "psnr_val": 39.164310455322266,
+   "delta_db": 1.8783040256090189,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 22.07075309753418,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 61.087669134140015,
+   "weights": "runs/evo/gen9/train/gen9-3.weights.h5"
+  },
+  {
+   "id": "gen9-4",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-4",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 7,
+      "c": 10,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 5,
+      "c": 10,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 44
+   },
+   "fingerprint": "cb07dc895f646097",
+   "status": "FEASIBLE",
+   "params": 1652,
+   "flops": 1728345600,
+   "latency_ms": 3.4200000000000004,
+   "psnr_val": 37.393829345703125,
+   "delta_db": 0.10782291598987825,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 22.577261209487915,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 87.11647009849548,
+   "weights": "runs/evo/gen9/train/gen9-4.weights.h5"
+  },
+  {
+   "id": "gen9-5",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-5",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 5,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 55
+   },
+   "fingerprint": "ba3e9da849a2d262",
+   "status": "FEASIBLE",
+   "params": 1528,
+   "flops": 1591488000,
+   "latency_ms": 2.8579999999999997,
+   "psnr_val": 39.77791213989258,
+   "delta_db": 2.4919057101793314,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 22.23446488380432,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 71.03175926208496,
+   "weights": "runs/evo/gen9/train/gen9-5.weights.h5"
+  },
+  {
+   "id": "gen9-6",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-6",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 4,
+      "act": "relu"
+     },
+     {
+      "op": "res",
+      "k": 3,
+      "c": 4,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 66
+   },
+   "fingerprint": "22197ac032e65205",
+   "status": "FEASIBLE",
+   "params": 852,
+   "flops": 920678400,
+   "latency_ms": 1.475,
+   "psnr_val": 38.71126174926758,
+   "delta_db": 1.4252553195543314,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.25750994682312,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 45.563719034194946,
+   "weights": "runs/evo/gen9/train/gen9-6.weights.h5"
+  }
+ ],
+ "front": [
+  {
+   "id": "gen2-4",
+   "gen": 2,
+   "source": "random",
+   "genome": {
+    "v": 1,
+    "id": "gen2-4",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 8,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "none",
+    "seed": 1
+   },
+   "fingerprint": "902ecb3100962978",
+   "status": "FEASIBLE",
+   "params": 938,
+   "flops": 948672000,
+   "latency_ms": 0.924,
+   "psnr_val": 28.626670837402344,
+   "delta_db": -8.659335592310903,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.06513786315918,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 36.3193359375,
+   "weights": "runs/evo/gen2/train/gen2-4.weights.h5"
+  },
+  {
+   "id": "gen1-4",
+   "gen": 1,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen1-4",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     },
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     },
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "none",
+    "seed": 5
+   },
+   "fingerprint": "4cc9bce2be004912",
+   "status": "FEASIBLE",
+   "params": 1488,
+   "flops": 1511654400,
+   "latency_ms": 1.2759999999999998,
+   "psnr_val": 31.12085723876953,
+   "delta_db": -6.1651491909437155,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.012773036956787,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 62.05634570121765,
+   "weights": "runs/evo/gen1/train/gen1-4.weights.h5"
+  },
+  {
+   "id": "gen6-1",
+   "gen": 6,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen6-1",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 8,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 42
+   },
+   "fingerprint": "5d07cf0168a4eb99",
+   "status": "FEASIBLE",
+   "params": 938,
+   "flops": 1010880000,
+   "latency_ms": 1.4460000000000002,
+   "psnr_val": 37.73542022705078,
+   "delta_db": 0.4494137973375345,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 20.873467206954956,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 37.36423206329346,
+   "weights": "runs/evo/gen6/train/gen6-1.weights.h5"
+  },
+  {
+   "id": "gen4-5",
+   "gen": 4,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen4-5",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 27
+   },
+   "fingerprint": "f39be5f2c650273d",
+   "status": "FEASIBLE",
+   "params": 1372,
+   "flops": 1461888000,
+   "latency_ms": 1.4620000000000002,
+   "psnr_val": 38.29502487182617,
+   "delta_db": 1.0090184421129251,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.067352056503296,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 41.321218967437744,
+   "weights": "runs/evo/gen4/train/gen4-5.weights.h5"
+  },
+  {
+   "id": "gen9-6",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-6",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 4,
+      "act": "relu"
+     },
+     {
+      "op": "res",
+      "k": 3,
+      "c": 4,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 66
+   },
+   "fingerprint": "22197ac032e65205",
+   "status": "FEASIBLE",
+   "params": 852,
+   "flops": 920678400,
+   "latency_ms": 1.475,
+   "psnr_val": 38.71126174926758,
+   "delta_db": 1.4252553195543314,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.25750994682312,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 45.563719034194946,
+   "weights": "runs/evo/gen9/train/gen9-6.weights.h5"
+  },
+  {
+   "id": "gen5-1",
+   "gen": 5,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen5-1",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 12,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 11
+   },
+   "fingerprint": "df6239f318376728",
+   "status": "FEASIBLE",
+   "params": 1720,
+   "flops": 1804032000,
+   "latency_ms": 1.972,
+   "psnr_val": 38.831302642822266,
+   "delta_db": 1.5452962131090189,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.514956951141357,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 50.657955169677734,
+   "weights": "runs/evo/gen5/train/gen5-1.weights.h5"
+  },
+  {
+   "id": "gen8-3",
+   "gen": 8,
+   "source": "llm_repaired",
+   "genome": {
+    "v": 1,
+    "id": "gen8-3",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 7,
+      "act": "relu"
+     },
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 7,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 101
+   },
+   "fingerprint": "4ae59e95dbd62af0",
+   "status": "FEASIBLE",
+   "params": 1886,
+   "flops": 1973030400,
+   "latency_ms": 2.122,
+   "psnr_val": 38.984703063964844,
+   "delta_db": 1.698696634251597,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.524254083633423,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 71.4281280040741,
+   "weights": "runs/evo/gen8/train/gen8-3.weights.h5"
+  },
+  {
+   "id": "gen9-1",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-1",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 7
+   },
+   "fingerprint": "48733310328ba509",
+   "status": "FEASIBLE",
+   "params": 1582,
+   "flops": 1658880000,
+   "latency_ms": 2.131,
+   "psnr_val": 39.173736572265625,
+   "delta_db": 1.8877301425523783,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.983635902404785,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 53.805026054382324,
+   "weights": "runs/evo/gen9/train/gen9-1.weights.h5"
+  },
+  {
+   "id": "gen1-1",
+   "gen": 1,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen1-1",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "conv",
+      "k": 3,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 5,
+      "c": 12,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 1
+   },
+   "fingerprint": "1c59e9b8ef979bb5",
+   "status": "FEASIBLE",
+   "params": 1848,
+   "flops": 1936742400,
+   "latency_ms": 2.401,
+   "psnr_val": 39.49772262573242,
+   "delta_db": 2.211716196019175,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 27.463769912719727,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 56.060131788253784,
+   "weights": "runs/evo/gen1/train/gen1-1.weights.h5"
+  },
+  {
+   "id": "gen5-6",
+   "gen": 5,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen5-6",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 5,
+      "c": 12,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 18
+   },
+   "fingerprint": "8e06049a1d040948",
+   "status": "FEASIBLE",
+   "params": 1686,
+   "flops": 1765670400,
+   "latency_ms": 2.508,
+   "psnr_val": 39.50308609008789,
+   "delta_db": 2.217079660374644,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 22.35885977745056,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 58.372807025909424,
+   "weights": "runs/evo/gen5/train/gen5-6.weights.h5"
+  },
+  {
+   "id": "gen8-2",
+   "gen": 8,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen8-2",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 5,
+      "c": 12,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 12,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 112
+   },
+   "fingerprint": "d714fc4126590297",
+   "status": "FEASIBLE",
+   "params": 1710,
+   "flops": 1782259200,
+   "latency_ms": 2.514,
+   "psnr_val": 39.694908142089844,
+   "delta_db": 2.408901712376597,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 21.793277978897095,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 63.741284132003784,
+   "weights": "runs/evo/gen8/train/gen8-2.weights.h5"
+  },
+  {
+   "id": "gen9-5",
+   "gen": 9,
+   "source": "llm",
+   "genome": {
+    "v": 1,
+    "id": "gen9-5",
+    "input": [
+     540,
+     960,
+     3
+    ],
+    "scale": 2,
+    "layers": [
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 6,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 5,
+      "c": 8,
+      "act": "relu"
+     },
+     {
+      "op": "dwsep",
+      "k": 3,
+      "c": 10,
+      "act": "relu"
+     }
+    ],
+    "upsample": "pixelshuffle",
+    "skip": "bilinear",
+    "seed": 55
+   },
+   "fingerprint": "ba3e9da849a2d262",
+   "status": "FEASIBLE",
+   "params": 1528,
+   "flops": 1591488000,
+   "latency_ms": 2.8579999999999997,
+   "psnr_val": 39.77791213989258,
+   "delta_db": 2.4919057101793314,
+   "bench_verdict": "PASS",
+   "fallback_reason": null,
+   "screen_wall_s": 22.23446488380432,
+   "bicubic_psnr_val": 37.28600642971325,
+   "train_wall_s": 71.03175926208496,
+   "weights": "runs/evo/gen9/train/gen9-5.weights.h5"
+  }
+ ],
+ "series_entry": {
+  "gen": 9,
+  "best_psnr_so_far": 39.77791213989258,
+  "best_id_so_far": "gen9-5",
+  "gen_best_psnr": 39.77791213989258,
+  "gen_best_id": "gen9-5",
+  "n_children": 6,
+  "n_feasible": 6,
+  "front_size": 12,
+  "wall_s": 669.248733997345
+ },
+ "params": {
+  "children": 6,
+  "steps": 2000,
+  "seed": 0,
+  "limit_ms": 4.0,
+  "data": "data/A"
+ }
+}
