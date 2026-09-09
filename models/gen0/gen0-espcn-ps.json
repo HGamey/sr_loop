@@ -1,0 +1,26 @@
+{
+ "v": 1,
+ "input": [
+  540,
+  960,
+  3
+ ],
+ "scale": 2,
+ "layers": [
+  {
+   "op": "conv",
+   "k": 5,
+   "c": 8,
+   "act": "relu"
+  },
+  {
+   "op": "conv",
+   "k": 3,
+   "c": 6,
+   "act": "relu"
+  }
+ ],
+ "seed": 0,
+ "id": "gen0-espcn-ps",
+ "upsample": "pixelshuffle"
+}

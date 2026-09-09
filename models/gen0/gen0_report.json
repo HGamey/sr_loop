@@ -1,0 +1,42 @@
+[
+ {
+  "id": "gen0-espcn-ps",
+  "fingerprint": "3562c82b59348b90",
+  "params": 1706,
+  "macs": 870912000,
+  "flops": 1741824000,
+  "params_ok": true,
+  "flops_ok": true,
+  "ok": true,
+  "tflite": {
+   "path": "models/gen0/gen0-espcn-ps.tflite",
+   "bytes": 8808,
+   "ops": [
+    "CONV_2D",
+    "CONV_2D",
+    "CONV_2D",
+    "DEPTH_TO_SPACE"
+   ]
+  }
+ },
+ {
+  "id": "gen0-espcn-bc",
+  "fingerprint": "e286cb159d79dc3d",
+  "params": 1211,
+  "macs": 870912000,
+  "flops": 1741824000,
+  "params_ok": true,
+  "flops_ok": true,
+  "ok": true,
+  "tflite": {
+   "path": "models/gen0/gen0-espcn-bc.tflite",
+   "bytes": 7012,
+   "ops": [
+    "CONV_2D",
+    "CONV_2D",
+    "RESIZE_BILINEAR",
+    "CONV_2D"
+   ]
+  }
+ }
+]
