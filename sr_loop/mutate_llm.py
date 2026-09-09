@@ -30,7 +30,8 @@ layers 为 1..16 个层, 顺序执行, 每层:
   每层乘加 ≈ H*W*K*K*Cin*Cout (conv), H*W*(K*K*Cin + Cin*Cout) (dwsep), 2*H*W*K*K*C*C (res); H*W=518400
   bilinear_conv 头的卷积在 2 倍分辨率上算 (4*H*W*9*Cin*3), pixelshuffle 头为 H*W*9*Cin*12
 真机门禁: GPU 内核时延 <= 4.0 ms (延迟由物理设备测得, 访存密集结构在低通道数下也可能很慢), 有任何 GPU 不支持的算子即淘汰。
-目标: 在延迟门禁内最大化验证集 PSNR。"""
+目标: 在延迟门禁内最大化验证集 PSNR。
+注意: 预算按上面的公式逐层相加后必须留 10% 余量 (FLOPs <= 1.8e9), 输出前请自行核算; 超预算的个体会被直接淘汰。"""
 
 
 def _summary(rec: dict[str, Any]) -> dict[str, Any]:
@@ -53,7 +54,7 @@ def build_prompt(parents: list[dict[str, Any]], front: list[dict[str, Any]], rec
     for r in parents:
         lines.append(json.dumps(r["genome"], ensure_ascii=False))
     lines += ["", f"请输出恰好 {n} 个新基因组组成的 JSON 数组。要求: 彼此结构不同; 至少一半用满延迟余量 (更宽或更深), "
-                  "至少一个探索不同的上采样头或残差/深度可分离结构; 全部满足预算; 不要复制父代。只输出 JSON。"]
+                  "至少一个探索不同的上采样头或残差/深度可分离结构; 全部满足预算 (逐层核算); 不要复制父代。只输出 JSON。"]
     return "\n".join(lines)
 
 
@@ -70,25 +71,55 @@ def parse_genomes(text: str) -> list[dict[str, Any]]:
     return [g for g in arr if isinstance(g, dict)]
 
 
+def repair_budget(g: dict[str, Any], max_iter: int = 4) -> dict[str, Any] | None:
+    """超预算的确定性修复: 按 sqrt(预算/FLOPs)*0.95 统一收缩各层通道 (res 层跟随其输入通道), 最多迭代 4 次。
+    结构 (层数/算子/核/激活/上采样头) 原样保留, 只动宽度; 修不进预算返回 None。"""
+    import copy
+    import math
+    g = copy.deepcopy(g)
+    for _ in range(max_iter):
+        b = G.budget(g)
+        if b["ok"]:
+            return g
+        ratio = min(G.FLOPS_LIMIT / max(b["flops"], 1), G.PARAM_LIMIT / max(b["params"], 1))
+        f = math.sqrt(ratio) * 0.95
+        cin = 3
+        for l in g["layers"]:
+            if l["op"] == "res":
+                l["c"] = cin
+            else:
+                l["c"] = max(1, int(l["c"] * f))
+            cin = l["c"]
+        try:
+            G.validate(g)
+        except G.GenomeError:
+            return None
+    return g if G.budget(g)["ok"] else None
+
+
 def mutate_llm(parents: list[dict[str, Any]], front: list[dict[str, Any]], recent: list[dict[str, Any]], n: int,
                gen: int, known_fps: set[str], limit_ms: float = 4.0, seed: int = 0) -> dict[str, Any]:
-    """返回 {"children": [genome...], "source": {id: llm|random}, "llm": {...}}"""
+    """返回 {"children": [genome...], "source": {id: llm|llm_repaired|random}, "llm": {...}}
+    向 LLM 多要一倍候选, 程序侧按预算过滤; 超预算者做通道收缩修复 (标 llm_repaired); 仍不足才随机补齐。"""
     out: list[dict[str, Any]] = []
     source: dict[str, str] = {}
     fps = set(known_fps)
-    info: dict[str, Any] = {"ok": False, "provider": None, "n_raw": 0, "n_valid": 0, "n_dup": 0, "n_invalid": 0, "error": None}
-    res = chat(SYSTEM, build_prompt(parents, front, recent, n, limit_ms))
+    info: dict[str, Any] = {"ok": False, "provider": None, "n_raw": 0, "n_valid": 0, "n_dup": 0, "n_invalid": 0,
+                            "n_over_budget": 0, "n_repaired": 0, "error": None}
+    res = chat(SYSTEM, build_prompt(parents, front, recent, 2 * n, limit_ms))
     info.update(ok=res["ok"], provider=res["provider"], error=res["error"], wall_s=res["wall_s"])
+    over_budget: list[dict[str, Any]] = []
     if res["ok"]:
         raw = parse_genomes(res["text"])
         info["n_raw"] = len(raw)
         for g in raw:
             g = dict(g)
             g["v"] = 1
-            g["id"] = f"gen{gen}-{len(out) + 1}"
+            g["id"] = ""
             g.setdefault("input", [540, 960, 3])
             g.setdefault("scale", 2)
             g.setdefault("seed", 0)
+            g["id"] = "tmp"
             try:
                 G.validate(g)
             except G.GenomeError:
@@ -98,12 +129,31 @@ def mutate_llm(parents: list[dict[str, Any]], front: list[dict[str, Any]], recen
             if fp in fps:
                 info["n_dup"] += 1
                 continue
+            if not G.budget(g)["ok"]:
+                info["n_over_budget"] += 1
+                over_budget.append(g)
+                continue
             fps.add(fp)
+            g["id"] = f"gen{gen}-{len(out) + 1}"
             out.append(g)
             source[g["id"]] = "llm"
             info["n_valid"] += 1
             if len(out) >= n:
                 break
+        for g in over_budget:
+            if len(out) >= n:
+                break
+            r = repair_budget(g)
+            if r is None:
+                continue
+            fp = G.fingerprint(r)
+            if fp in fps:
+                continue
+            fps.add(fp)
+            r["id"] = f"gen{gen}-{len(out) + 1}"
+            out.append(r)
+            source[r["id"]] = "llm_repaired"
+            info["n_repaired"] += 1
     # 不足则随机变异补齐 (如实标注), 保证闭环不因外部通道断掉
     rng = random.Random(seed * 1000 + gen)
     tries = 0
