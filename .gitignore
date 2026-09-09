@@ -11,3 +11,5 @@ runs/*
 !runs/gate1/
 !runs/gate1/*.json
 !runs/gate1/*.jsonl
+runs/gate0/*/
+runs/gate1/*/
