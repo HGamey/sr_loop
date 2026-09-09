@@ -1,0 +1,203 @@
+{
+  "backend": null,
+  "bench_bin": "tools/tflite/android_aarch64_benchmark_model",
+  "delegate": {
+    "partitions": 1,
+    "replaced": 4,
+    "total": 4
+  },
+  "device": {
+    "android": "16",
+    "model": "NX809J",
+    "platform": "canoe",
+    "sdk": "36",
+    "soc": "SM8850"
+  },
+  "lock": {
+    "bus": [
+      {
+        "floor_before_khz": 547000,
+        "name": "DDR",
+        "pin_khz": 5333000
+      },
+      {
+        "floor_before_khz": 282000,
+        "name": "LLCC",
+        "pin_khz": 1350000
+      }
+    ],
+    "cpu_before": [
+      {
+        "cpus": "0,1,2,3,4,5",
+        "governor": "walt",
+        "policy": "policy0"
+      },
+      {
+        "cpus": "6,7",
+        "governor": "walt",
+        "policy": "policy6"
+      }
+    ],
+    "enabled": true,
+    "gpu": {
+      "hz": 902000000,
+      "level": 3,
+      "level_before": [
+        3,
+        17
+      ],
+      "model": "Adreno840v2",
+      "num_levels": 18
+    },
+    "recovered_stale": null,
+    "restored_all": true
+  },
+  "model": {
+    "bytes": 6232,
+    "path": "../sr_loop/models/test/fallback.tflite",
+    "sha256": "9e5f88eb3c5adc69ac209b9e012fa9efc79b536e47cd5cd26ce0c019729c51c4"
+  },
+  "ok": false,
+  "ops": [],
+  "params": {
+    "clean_cv_limit_pct": 5.0,
+    "cool_c": 40.0,
+    "fp16": true,
+    "limit_ms": 4.0,
+    "max_rounds": 6,
+    "metric": "gpu",
+    "num_runs": 100,
+    "runs": 3,
+    "threads": 1,
+    "warmup": 20
+  },
+  "rounds": [
+    {
+      "backend": null,
+      "bus_khz": [
+        {
+          "max": 5333000,
+          "min": 5333000,
+          "mode": 5333000,
+          "name": "DDR"
+        },
+        {
+          "max": 1350000,
+          "min": 1350000,
+          "mode": 1350000,
+          "name": "LLCC"
+        }
+      ],
+      "clean": false,
+      "cpu_khz": [
+        {
+          "max": 2112000,
+          "min": 2112000,
+          "mode": 2112000
+        },
+        {
+          "max": 1862400,
+          "min": 1862400,
+          "mode": 1862400
+        }
+      ],
+      "cv_pct": null,
+      "delegate": {
+        "partitions": 1,
+        "replaced": 4,
+        "total": 4
+      },
+      "delegate_attempted": true,
+      "error": "ERROR: TfLiteGpuDelegate Init: No selector for floor_mod",
+      "fallback_reason": "backend=none; ERROR: TfLiteGpuDelegate Init: No selector for floor_mod",
+      "first_us": null,
+      "full_gpu": false,
+      "gpu_kernel_us": null,
+      "gpuclk_hz": {
+        "max": 902000000,
+        "min": 902000000,
+        "mode": 902000000
+      },
+      "init_us": null,
+      "invoke": null,
+      "invoke_avg_us": null,
+      "lock": {
+        "applied": true,
+        "bus": [
+          {
+            "cur_khz": 5333000,
+            "floor_khz": 5333000,
+            "max_khz": 5333000,
+            "name": "DDR"
+          },
+          {
+            "cur_khz": 1350000,
+            "floor_khz": 1350000,
+            "max_khz": 1350000,
+            "name": "LLCC"
+          }
+        ],
+        "bus_verified": true,
+        "cpu": [
+          {
+            "cpus": "0,1,2,3,4,5",
+            "cur_khz": 2112000,
+            "governor": "performance",
+            "max_khz": 2112000,
+            "policy": "policy0"
+          },
+          {
+            "cpus": "6,7",
+            "cur_khz": 1862400,
+            "governor": "performance",
+            "max_khz": 1862400,
+            "policy": "policy6"
+          }
+        ],
+        "gpu_thermal_level": 0,
+        "gpu_throttled": false,
+        "gpu_verified": true,
+        "restored": true,
+        "verified": true
+      },
+      "log": "/private/tmp/claude-501/-Users-mac-Library-Application-Support-CindyGlobal-owners-ae98ca1d7b2b6ae48f15-dialogues-2026-09-09-8a26c8c0-f525-4a4e-a726-6172c3cc42d4/6520e5aa-b112-4f21-8ebe-11c77adbd43f/scratchpad/bench_fallback3/round1.log",
+      "ops": [],
+      "profile_total": null,
+      "round": 1,
+      "thermal": {
+        "end_c": 39.3,
+        "end_zone": "cpullc-0-0",
+        "start_c": 37.0,
+        "start_zone": "cpullc-0-0",
+        "waited_s": 2
+      },
+      "wall_ms": 413,
+      "warmup_avg_us": null
+    }
+  ],
+  "serial": "91253241019A",
+  "summary": {
+    "dispersion_limit_pct": 5.0,
+    "dispersion_ok": false,
+    "dispersion_pct": 0.0,
+    "errors": [
+      "ERROR: TfLiteGpuDelegate Init: No selector for floor_mod"
+    ],
+    "fallback_reason": "backend=none; ERROR: TfLiteGpuDelegate Init: No selector for floor_mod",
+    "feasible": false,
+    "full_gpu": false,
+    "gpu_lock_verified": true,
+    "latency_ms": 0.0,
+    "limit_ms": 4.0,
+    "max_ms": 0.0,
+    "metric": "gpu",
+    "min_ms": 0.0,
+    "rounds_interfered": 1,
+    "rounds_total": 1,
+    "window": null,
+    "within_limit": false
+  },
+  "v": 1,
+  "verdict": "FAIL_FALLBACK",
+  "wall_s": 6.860369625
+}

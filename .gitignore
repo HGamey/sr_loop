@@ -8,3 +8,6 @@ runs/*
 .DS_Store
 !runs/gate0/
 !runs/gate0/*.json
+!runs/gate1/
+!runs/gate1/*.json
+!runs/gate1/*.jsonl
