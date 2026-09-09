@@ -39,6 +39,18 @@ def main() -> int:
         f" (累计最优: rho={cum.get('rho')}, p={cum.get('p_value')}; 逐代最优: rho={per.get('rho')}, p={per.get('p_value')})"
     out = a.out or f"{a.archive}/spearman_report.json"
     json.dump(report, open(out, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    # 人读的结论报告 (Markdown), 与 JSON 同源
+    md = ["# SR_LOOP Gate 4: 多代演进 Spearman 秩相关报告", "",
+          f"- 代数: {report['generations']} (gen 1..{gens[-1] if gens else '-'}), 显著性水平 alpha = {a.alpha}",
+          f"- 累计最优 PSNR 序列 (best_psnr_so_far): rho = {cum.get('rho')}, p = {cum.get('p_value')}, "
+          f"首代 {cum.get('first')} → 末代 {cum.get('last')} dB, 增益 {cum.get('gain_db')} dB",
+          f"- 逐代最优 PSNR 序列 (gen_best_psnr): rho = {per.get('rho')}, p = {per.get('p_value')}, 增益 {per.get('gain_db')} dB",
+          f"- 结论: **{report['conclusion']}**", "",
+          "| gen | 本代最佳 PSNR | 历史最佳 PSNR | 历史最佳个体 | 可行/子代 | 前沿数 | 用时 s |", "|---|---|---|---|---|---|---|"]
+    for s_ in series:
+        md.append(f"| {s_['gen']} | {s_.get('gen_best_psnr')} | {s_.get('best_psnr_so_far')} | {s_.get('best_id_so_far')} | "
+                  f"{s_.get('n_feasible')}/{s_.get('n_children')} | {s_.get('front_size')} | {round(s_.get('wall_s', 0))} |")
+    open(out.replace(".json", ".md"), "w", encoding="utf-8").write("\n".join(md) + "\n")
     print(json.dumps({k: report[k] for k in ("generations", "best_psnr_so_far", "gen_best_psnr", "conclusion")}, ensure_ascii=False, indent=1))
     return 0
 
