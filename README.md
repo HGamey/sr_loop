@@ -25,6 +25,7 @@ uv venv --python 3.12 ~/.venvs/srloop && uv pip install --python ~/.venvs/srloop
 
 # Gate 3/4: 单代闭环 x N 代 (LLM 变异 -> 秒筛 -> 短训 -> Pareto 归档 -> gen_N.json), 然后 Spearman
 ~/.venvs/srloop/bin/python -m sr_loop.evolve --serial <ID> --data data/A --out runs/evo --generations 20 --children 6 --steps 2000
+~/.venvs/srloop/bin/python -m sr_loop.gate3 --archive runs/evo --gen 1   # Gate 3 验收: 单代归档完整且无人工介入/无异常阻断
 ~/.venvs/srloop/bin/python -m sr_loop.analyze --archive runs/evo
 ```
 
