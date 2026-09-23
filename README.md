@@ -4,9 +4,18 @@
 
 ---
 
-> ## 📌 仓库定位与基准背景
+> ## 📌 在整体里的位置
 >
-> **端侧轻量神经网络是性能优化闭环里的候选改动方向之一，而非唯一主线。** 主线是 `phonefarm` 的评估 + 优化闭环 Harness。
+> 本仓库是已结项的前序实验，不在当前主线上。
+>
+> 当前主线是一个 harness：用户只提一种任务——「把某个游戏在某台手机上优化一下」，
+> 内部自动决定用哪几层。[`game_opt_loop`](https://github.com/HGamey/game_opt_loop) 🔒 是入口与
+> 决策层（接任务、摸底、决定开哪几路、出方案、归档优胜、出报告），
+> [`phonefarm`](https://github.com/BH3GEI/phonefarm) 是底座（驱动设备、施加改动、测量、
+> 统计判定、还原）。优化分三层：游戏代码（需要白盒）、图形接口 Vulkan 层、系统参数。
+>
+> 本仓库当年问的是「端侧轻量神经网络能不能当一条候选改动路线」。下面这几条背景
+> 把后续重心推到了 Shader / Compute 算子直通管线，那条线现在在 `game_opt_loop` 里继续。
 >
 > 全景路线见清单：
 > 🔒 组织成员 [`HGamey/phonefarm/docs/MOBILE_GPU_OPT_ROUTES.md`](https://github.com/HGamey/phonefarm/blob/main/docs/MOBILE_GPU_OPT_ROUTES.md) ·
